@@ -1,0 +1,21 @@
+{
+  "name": "firevuex",
+  "version": "1.0.0",
+  "description": "Binding between firebase and vuex",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "webpack src/index.js dist/index.js --watch --output-library=FireVuex --output-library-target=umd",
+    "build": "webpack src/index.js dist/index.js --output-library=FireVuex --output-library-target=umd",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brendan <granipouss@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^1.14.0"
+  }
+}

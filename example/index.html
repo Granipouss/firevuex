@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FireVuex</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css">
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@2.1.1"></script>
+    <script src="../dist/index.js"></script>
+  </head>
+
+  <body>
+    <section id="app" class="hero is-fullheight">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="column has-text-centered">
+              <h1 class="title">FireVuex</h1>
+              <h2 class="subtitle">A binding between Firebase and Vuex</h2>
+              <hr>
+            </div>
+          </div>
+          <div class="columns">
+            <!-- Object binding -->
+            <div class="column content">
+              <label class="label">Firebase message</label>
+              <p class="control">
+                <textarea class="textarea is-disabled" placeholder="Waiting..." v-model="message"></textarea>
+              </p>
+              <label class="label">Update message</label>
+              <p class="control">
+                <textarea class="textarea" placeholder="A new message" v-model="newMessage"></textarea>
+              </p>
+              <p class="control has-text-right">
+                <button @click="setMessage" class="button is-primary">Update</button>
+              </p>
+            </div>
+
+            <div class="column">
+              <!-- Todos list -->
+              <article class="media" v-for="todo in todos">
+                <div class="media-left">
+                  <a @click="toggleTodo(todo)" class="level-item">
+                    <span v-if="!todo.done" class="icon"><i class="fa fa-square-o"></i></span>
+                    <span v-else class="icon"><i class="fa fa-check-square-o"></i></span>
+                  </a>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <p>{{ todo.label }}</p>
+                  </div>
+                </div>
+                <div class="media-right">
+                  <button @click="removeTodo(todo)" class="delete"></button>
+                </div>
+              </article>
+
+              <!-- New Todo -->
+              <article class="media">
+                <div class="media-content">
+                  <p class="control has-addons">
+                    <input class="input is-expanded" type="text" placeholder="New todo" v-model="newTodo">
+                    <a @click="addTodo" class="button is-primary">
+                      <span class="icon">
+                        <i class="fa fa-plus"></i>
+                      </span>
+                      <span>Add</span>
+                    </a>
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>
