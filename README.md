@@ -4,7 +4,7 @@
 
 ## Installation
 
-1. If included as global <script>: the `FireVuex` will be available globally.
+1. If included as global `<script>`: the `FireVuex` will be available globally.
 
 2. In module environments, e.g CommonJS:
   ```bash
