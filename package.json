@@ -8,6 +8,10 @@
     "LICENSE",
     "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Granipouss/firevuex.git"
+  },
   "scripts": {
     "dev": "webpack src/index.js dist/index.js --watch --output-library=FireVuex --output-library-target=umd",
     "build": "webpack src/index.js dist/index.js --output-library=FireVuex --output-library-target=umd",
@@ -15,6 +19,10 @@
   },
   "author": "Brendan <granipouss@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Granipouss/firevuex/issues"
+  },
+  "homepage": "https://github.com/Granipouss/firevuex#readme",
   "devDependencies": {
     "webpack": "^1.14.0"
   }
