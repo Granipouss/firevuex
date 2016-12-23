@@ -15,7 +15,8 @@
   "scripts": {
     "dev": "webpack src/index.js dist/index.js --watch --output-library=FireVuex --output-library-target=umd",
     "build": "webpack src/index.js dist/index.js --output-library=FireVuex --output-library-target=umd",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "np"
   },
   "author": "Brendan <granipouss@gmail.com>",
   "license": "MIT",
