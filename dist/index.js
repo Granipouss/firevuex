@@ -54,7 +54,16 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const { isArray, isString, isObject, createRecord, getKey, indexForKey } = __webpack_require__(1)
+	const { bindDatabase } = __webpack_require__(1)
+
+	module.exports = { bindDatabase }
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const { isArray, isString, isObject, createRecord, getKey, indexForKey } = __webpack_require__(2)
 
 	function formatDataMap (dataMap, database) {
 	  if (isArray(dataMap)) {
@@ -77,18 +86,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    dataMap[key].cancelCallback = dataMap[key].cancelCallback || null
 	  }
 	  return dataMap
-	}
-
-	function sync (store, app, dataMap) {
-	  dataMap = formatDataMap(dataMap, app.database())
-	  for (let key in dataMap) {
-	    if (dataMap[key].type === 'object') {
-	      bindAsObject(store, key, dataMap[key].source, dataMap[key].cancelCallback)
-	    }
-	    if (dataMap[key].type === 'array') {
-	      bindAsArray(store, key, dataMap[key].source, dataMap[key].cancelCallback)
-	    }
-	  }
 	}
 
 	function bindAsObject (store, name, source, cancelCallback) {
@@ -153,11 +150,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	  source.on('child_changed', (snapshot) => store.commit(name + '/change', { snapshot }), cancelCallback)
 	}
 
-	module.exports = { sync }
+	exports.bindDatabase = function (store, app, dataMap) {
+	  dataMap = formatDataMap(dataMap, app.database())
+	  for (let key in dataMap) {
+	    if (dataMap[key].type === 'object') {
+	      bindAsObject(store, key, dataMap[key].source, dataMap[key].cancelCallback)
+	    }
+	    if (dataMap[key].type === 'array') {
+	      bindAsArray(store, key, dataMap[key].source, dataMap[key].cancelCallback)
+	    }
+	  }
+	}
 
 
 /***/ },
-/* 1 */
+/* 2 */
 /***/ function(module, exports) {
 
 	// Type Checking

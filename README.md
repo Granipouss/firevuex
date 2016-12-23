@@ -4,7 +4,16 @@
 
 ## Installation
 
-To be done soon...
+1. If included as global <script>: the `FireVuex` will be available globally.
+
+2. In module environments, e.g CommonJS:
+  ```bash
+  npm i -S firevuex
+  ```
+  and then next
+  ```js
+  const FireVuex = require('firevuex')
+  ```
 
 ## Usage
 
@@ -15,16 +24,16 @@ const app = firebase.initializeApp({ ... })
 const store = new Vuex.Store({ ... })
 
 // Binding
-FireVuex.sync(store, app, {
+FireVuex.bindDatabase(store, app, {
   'message': 'message',
   'todos': { source: 'todos', type: 'array' },
   ...
 })
 ```
 
-### Ways of syncing
+### Ways of binding
 ```js
-FireVuex.sync(store, app, dataMap)
+FireVuex.bindDatabase(store, app, dataMap)
 ```
 
 - **store** is a vuex store
@@ -43,11 +52,11 @@ But you can do it shorter `moduleNameOrPath: QueryOrRefOrPath`.
 
 There are two types of bindings, the array binding for lists and object binding for the rest.
 
-### Object binding
+##### Object binding
 
 A source bound as object with the name `foobar` will create a `foobar` module with a `foobar/get` getter returning the current value and a `foobar/set` action that can be used to change the value.
 
-### Array binding
+##### Array binding
 
 A source bound as array with the name `foobar` will create a `foobar` module containing list of records that you can retrieve with the `foobar/get` getter.
 

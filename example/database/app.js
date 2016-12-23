@@ -4,7 +4,7 @@ const app = firebase.initializeApp({ databaseURL: 'https://firevuex.firebaseio.c
 const store = new Vuex.Store({})
 
 // Binding
-FireVuex.sync(store, app, {
+FireVuex.bindDatabase(store, app, {
   'message': 'message',
   'todos': { source: 'todos', type: 'array' }
 })
