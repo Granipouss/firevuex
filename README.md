@@ -17,7 +17,7 @@
 
 ## Usage
 
-> You may want to see [the example](example/app.js) to have a preview of usage.
+> You may want to see [the example](example/database/app.js) to have a preview of usage.
 
 ``` js
 const app = firebase.initializeApp({ ... })
