@@ -55,8 +55,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	const { bindDatabase } = __webpack_require__(1)
+	const { addAuthModule } = __webpack_require__(3)
 
-	module.exports = { bindDatabase }
+	module.exports = {
+	  bindDatabase,
+	  addAuthModule
+	}
 
 
 /***/ },
@@ -192,6 +196,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (array[i]['.key'] === key) return i
 	  }
 	  return -1
+	}
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	exports.addAuthModule = function (store, app, moduleName = 'auth') {
+	  // Make module
+	  store.registerModule(moduleName, {
+	    namespaced: true,
+	    state: { user: null },
+	    mutations: {
+	      signin (state, user) { state.user = user },
+	      signout (state) { state.user = null }
+	    },
+	    getters: {
+	      getUser: state => state.user,
+	      isLogged: state => state.user != null
+	    }
+	  })
+	  // Binding
+	  app.auth().onAuthStateChanged(
+	    user => user
+	      ? store.commit(moduleName + '/signin', user)
+	      : store.commit(moduleName + '/signout')
+	  )
 	}
 
 
