@@ -22,6 +22,15 @@
   },
   "author": "Brendan <granipouss@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "vue",
+    "vuex",
+    "store",
+    "firebase",
+    "fire",
+    "bind",
+    "sync"
+  ],
   "bugs": {
     "url": "https://github.com/Granipouss/firevuex/issues"
   },
