@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FireVuex</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css">
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@2.1.1"></script>
+    <script src="../../dist/index.js"></script>
+  </head>
+
+  <body>
+    <section id="app" class="hero is-fullheight">
+      <div class="hero-body">
+        <div class="container">
+          <div class="header has-text-centered">
+            <h1 class="title">FireVuex</h1>
+            <h2 class="subtitle">A binding between Firebase and Vuex</h2>
+            <hr>
+          </div>
+
+          <!-- If logged -->
+          <div v-if="isLogged" class="section">
+            <p class="content has-text-centered">
+              Hello, <b>{{ user.displayName || user.email }}</b>!
+            </p>
+            <div class="has-text-centered">
+              <button @click="signOut" class="button is-primary is-medium">Sign out</button>
+            </div>
+          </div>
+
+          <!-- If not logged -->
+          <div v-else class="section">
+            <label class="label">Email</label>
+            <p class="control">
+              <input class="input" type="text" v-model="email">
+            </p>
+            <label class="label">Password</label>
+            <p class="control">
+              <input class="input" type="password" v-model="password">
+            </p>
+            <div class="has-text-centered">
+              <button @click="signIn" class="button is-primary is-medium">Sign in</button>
+            </div>
+            <p class="has-text-centered">OR</p>
+            <div class="has-text-centered">
+              <button @click="signInWithGoogle" class="button is-primary is-medium">Sign in with Google</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>
