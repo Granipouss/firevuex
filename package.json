@@ -1,6 +1,6 @@
 {
   "name": "firevuex",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Binding between firebase and vuex",
   "main": "dist/index.js",
   "files": [
